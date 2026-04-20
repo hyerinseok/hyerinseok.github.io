@@ -78,10 +78,9 @@
         }
 
         img {
-            position: absolute;
             width: auto;
             height: 450px;
-            transform: translateZ(.25px) scale(.8) translateX(-80%) translateY(-210%) rotate(5deg);
+            transform: translateZ(.25px) scale(1) rotate(3deg);
             padding: 10px;
             border-radius: 5px;
             background: rgba(240, 230, 220, .7);
@@ -89,13 +88,17 @@
         }
 
         .slide:nth-child(2n+1) img {
+            position: absolute;
+            top: 0%;
             left: 60%;
             margin-left: 0;
             margin-right: auto;
         }
 
         .slide:nth-child(2n) img {
-            left: 10%;
+            position: absolute;
+            top: 0%;
+            left: 20%;
             margin-left: auto;
             margin-right: 0;
         }
