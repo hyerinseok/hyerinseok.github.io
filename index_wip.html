@@ -80,13 +80,14 @@
         }
 
         .showOff {
+            max-width: 45%;
             height: stretch;
             padding: 10px;
         }
 
         .showOff > *{
-            width: auto;
-            max-height: 100%;
+            max-width: stretch;
+            max-height: stretch;
             transform: translateZ(.1px) scale(0.9) rotate(3deg);
             border-radius: 5px;
             background: rgba(240, 230, 220, .7);
@@ -96,7 +97,7 @@
         .slide:nth-child(2n+1) .showOff{
             position: absolute;
             top: 5%;
-            right: 0%;
+            right: 10%;
             margin-left: 0;
             margin-right: auto;
         }
@@ -104,7 +105,7 @@
         .slide:nth-child(2n) .showOff{
             position: absolute;
             top: 5%;
-            left: 15%;
+            left: 10%;
             margin-left: auto;
             margin-right: 0;
         }
