@@ -80,19 +80,17 @@
 
         .intro {
             position: relative;
-
-        }
-
-        .intro div{
-            position: absolute;
-            max-width: 40%;
-            height: stretch;
+            display: grid;
+            grid-template-columns: auto auto auto auto;
         }
 
         .intro img{
-            margin-left: auto;
-            max-width: 40%;
-            height: stretch;
+            max-width: stretch;
+            max-height: stretch;
+            transform: translateZ(.1px) scale(0.9) rotate(3deg);
+            border-radius: 5px;
+            background: rgba(240, 230, 220, .7);
+            box-shadow: 0 0 8px rgba(0, 0, 0, .7);
         }
 
         .resume_body {
