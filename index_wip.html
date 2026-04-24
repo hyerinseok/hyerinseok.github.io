@@ -49,6 +49,8 @@
             width: 100%;
             box-sizing: border-box;
             transform-style: inherit;
+            display: grid;
+            grid-auto-flow: column;
         }
 
         .slide:before {
@@ -78,9 +80,19 @@
         }
 
         .showOff {
-            width: auto;
+            width: inherit;
             height: auto;
             padding: 10px;
+        }
+
+        .showOff:nth-child(2n+1){
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        .showOff:nth-child(2n){
+            margin-left: 0;
+            margin-right: auto;
         }
 
         .showOff > {
