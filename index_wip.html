@@ -80,25 +80,31 @@
         .showOff {
             width: auto;
             height: 450px;
-            transform: translateZ(.1px) scale(0.9) rotate(3deg);
+            max-width: inherit;
+            max-height: inherit;
             padding: 10px;
+        }
+
+        .showOff > {
+            
+            transform: translateZ(.1px) scale(0.9) rotate(3deg);
             border-radius: 5px;
             background: rgba(240, 230, 220, .7);
             box-shadow: 0 0 8px rgba(0, 0, 0, .7);
         }
 
-        .slide:nth-child(2n+1) img {
+        .slide:nth-child(2n+1) .showOff{
             position: absolute;
             top: 5%;
-            left: 50%;
+            left: 55%;
             margin-left: 0;
             margin-right: auto;
         }
 
-        .slide:nth-child(2n) img {
+        .slide:nth-child(2n) .showOff{
             position: absolute;
             top: 5%;
-            left: 10%;
+            left: 15%;
             margin-left: auto;
             margin-right: 0;
         }
@@ -142,7 +148,7 @@
                 width : 100%;
             }
 
-            .slide:nth-child(n) img {
+            .slide:nth-child(n) .showOff{
                 position: relative;
                 top: auto;
                 left: auto;
@@ -236,7 +242,7 @@
     </div>
 
     <div id="slide5" class="slide">
-        <video class="showOff" src="assets/img/AR_Interaction_Spark.mp4">Your browser does not support the video tag.</video>
+        <video class="showOff" src="assets/img/AR_Interaction_Spark.mp4" controls>Your browser does not support the video tag.</video>
         <div class="title">
             <h1>AR project for application submission</h1>
             <p>Take home AR interaction assignments for Meta Reality Lab using Spark Studio with Javascript.</p>
