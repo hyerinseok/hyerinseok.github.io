@@ -183,10 +183,22 @@
             position: sticky;
             width: 100%;
             bottom: 1px;
+            align-content: center;
         }
 
         #slide_end {
             background: lightblue;
+            display: grid;
+            grid-template-columns: auto auto auto;
+        }
+        
+        @keyframes rotate {
+        from {
+            transform: rotate(0deg);
+        }
+        to { 
+            transform: rotate(360deg);
+        }
         }
 
         img.spinningbori {
