@@ -181,29 +181,29 @@
         .peekaboo {
             z-index: -50;
             position: sticky;
-            width: 100%;
             bottom: 1px;
             align-content: center;
+            text-align: center;
         }
 
         #slide_end {
             background: lightblue;
             display: grid;
-            grid-template-columns: auto auto auto;
+            grid-template-columns: auto 70% auto;
         }
         
         @keyframes rotate {
-        from {
-            transform: rotate(0deg);
-        }
-        to { 
-            transform: rotate(360deg);
-        }
+            from {
+                transform: rotate(0deg);
+            }
+            to { 
+                transform: rotate(360deg);
+            }
         }
 
         img.spinningbori {
             animation: rotate 1s infinite linear;
-            width: 10%;
+            width: 50%;
             align-content: center;
             margin: auto;
         }
