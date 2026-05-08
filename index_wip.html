@@ -212,228 +212,126 @@
             }
 
             @layer carousel {
-  .carousel {
-    display: grid;
-    background: white;
-    aspect-ratio: 1;
-    grid-auto-columns: 100%;
-    grid-auto-flow: column;
-    inline-size: 100%;
-    anchor-name: --carousel;
-    scroll-marker-group: after;
-    scroll-behavior: smooth;
-    border: 5px solid black;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
+                .carousel {
+                    display: grid;
+                    background: white;
+                    aspect-ratio: 1;
+                    grid-auto-columns: 100%;
+                    grid-auto-flow: column;
+                    inline-size: 100%;
+                    anchor-name: --carousel;
+                    scroll-marker-group: after;
+                    scroll-behavior: smooth;
+                    border: 5px solid black;
+                    overflow-x: auto;
+                    overscroll-behavior-x: contain;
+                    scroll-snap-type: x mandatory;
+                    scrollbar-width: none;
 
-    img {
-      width: 100%;
-      aspect-ratio: 1;
-      object-fit: contain;
-      object-position: center;
-    }
+                    img {
+                    width: 100%;
+                    aspect-ratio: 1;
+                    object-fit: contain;
+                    object-position: center;
+                    }
 
-    /*     Set the scroll marker group */
-    &::scroll-marker-group {
-      display: flex;
-      margin-top: 20px;
-      gap: 16px;
-      height: 70px;
-      width: 100%;
-    }
-  }
-}
+                    
+                    video {
+                    width: 100%;
+                    aspect-ratio: 1;
+                    object-fit: contain;
+                    object-position: center;
+                    }
 
-@layer carouselItemsAndThumbs {
-  .carousel > div {
-    /*     Get the attribute of the div containing the background-image (Chrome since 133) */
-    --image: attr(data-src type(<image>), "");
-    scroll-snap-stop: always;
-    scroll-snap-align: start;
+                    /*     Set the scroll marker group */
+                    &::scroll-marker-group {
+                    display: flex;
+                    margin-top: 20px;
+                    gap: 16px;
+                    height: 70px;
+                    width: 100%;
+                    }
+                }
+                }
 
-    /* Style the thumbnails*/
-    &::scroll-marker {
-      display: block;
-      content: " ";
-      aspect-ratio: 1;
-      width: 60px;
-      height: 60px;
-      border: 3px solid black;
-      cursor: pointer;
-      background: transparent;
-      justify-content: center;
-      transition: border-color 0.5s ease-out;
-      /* Set image variable from parent as background */
-      background: var(--image, green);
-      background-size: cover;
-      background-repeat: no-repeat;
-    }
+                @layer carouselItemsAndThumbs {
+                .carousel > div {
+                    /*     Get the attribute of the div containing the background-image (Chrome since 133) */
+                    --image: attr(data-src type(<image>), "");
+                    scroll-snap-stop: always;
+                    scroll-snap-align: start;
 
-    &::scroll-marker:target-current {
-      border-color: fuchsia;
-    }
-    &::scroll-marker:hover,
-    &::scroll-marker:active {
-      border-color: gray;
-    }
-  }
-}
+                    /* Style the thumbnails*/
+                    &::scroll-marker {
+                    display: block;
+                    content: " ";
+                    aspect-ratio: 1;
+                    width: 60px;
+                    height: 60px;
+                    border: 3px solid black;
+                    cursor: pointer;
+                    background: transparent;
+                    justify-content: center;
+                    transition: border-color 0.5s ease-out;
+                    /* Set image variable from parent as background */
+                    background: var(--image, green);
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    }
 
-@layer carouselArrows {
-  .carousel {
-    &::scroll-button(right),
-    &::scroll-button(left) {
-      cursor: pointer;
-      position: absolute;
-      z-index: 1;
-      position-anchor: --carousel;
-      inline-size: 44px;
-      background-color: rgb(255 255 255 / 0.5);
-      backdrop-filter: blur(5px);
-      border: 1px solid black;
-      border-radius: 50%;
-      line-height: 1;
-      aspect-ratio: 1;
-      content: "";
+                    &::scroll-marker:target-current {
+                    border-color: fuchsia;
+                    }
+                    &::scroll-marker:hover,
+                    &::scroll-marker:active {
+                    border-color: gray;
+                    }
+                }
+                }
 
-      top: anchor(center);
-      inset-inline: anchor(start) anchor(end);
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='size-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M15.75 19.5 8.25 12l7.5-7.5' /%3E%3C/svg%3E%0A");
-      background-size: 24px 24px;
-      background-repeat: no-repeat;
-      background-position: center;
-      translate: 20px -50%;
-      transition: border-color 0.5s ease-out;
-    }
+                @layer carouselArrows {
+                    .carousel {
+                        &::scroll-button(right),
+                        &::scroll-button(left) {
+                        cursor: pointer;
+                        position: absolute;
+                        z-index: 1;
+                        position-anchor: --carousel;
+                        inline-size: 44px;
+                        background-color: rgb(255 255 255 / 0.5);
+                        backdrop-filter: blur(5px);
+                        border: 1px solid black;
+                        border-radius: 50%;
+                        line-height: 1;
+                        aspect-ratio: 1;
+                        content: "";
 
-    &::scroll-button(right) {
-      top: anchor(center);
-      content: "";
-      inset-inline: auto anchor(end);
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='size-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='m8.25 4.5 7.5 7.5-7.5 7.5' /%3E%3C/svg%3E%0A");
-      translate: -20px -50%;
-    }
-    &::scroll-button(right):hover,
-    &::scroll-button(right):active,
-    &::scroll-button(left):hover,
-    &::scroll-button(left):active {
-      border-color: fuchsia;
-    }
-  }
-}
+                        top: anchor(center);
+                        inset-inline: anchor(start) anchor(end);
+                        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='size-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M15.75 19.5 8.25 12l7.5-7.5' /%3E%3C/svg%3E%0A");
+                        background-size: 24px 24px;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        translate: 20px -50%;
+                        transition: border-color 0.5s ease-out;
+                        }
 
-@layer base {
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
+                        &::scroll-button(right) {
+                        top: anchor(center);
+                        content: "";
+                        inset-inline: auto anchor(end);
+                        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='size-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='m8.25 4.5 7.5 7.5-7.5 7.5' /%3E%3C/svg%3E%0A");
+                        translate: -20px -50%;
+                        }
+                        &::scroll-button(right):hover,
+                        &::scroll-button(right):active,
+                        &::scroll-button(left):hover,
+                        &::scroll-button(left):active {
+                        border-color: fuchsia;
+                        }
+                    }
+                }
 
-  body {
-    background: #dedede;
-    min-height: 100dvh;
-    margin: 0;
-    padding: 5vmin;
-    font-family: "Roboto", serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-size: 1.125rem;
-    line-height: 1.5;
-    font-style: normal;
-    font-variation-settings: "wdth" 100;
-  }
-
-  h1 {
-    font-family: "Oswald", sans-serif;
-    margin: 0 0 20px 0;
-    line-height: 1.1;
-  }
-}
-
-@layer product {
-  .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
-    gap: 30px;
-    > div:nth-child(2) {
-      padding-block: 30px;
-    }
-  }
-
-  .buy-box {
-    display: flex;
-    gap: 10px;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    align-items: center;
-    div {
-      flex-grow: 1;
-      color: darkorange;
-      font-family: "Oswald", sans-serif;
-    }
-
-    input[type="number"] {
-      width: 60px;
-      height: 40px;
-      font-size: 16px;
-      text-align: center;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      outline: none;
-
-      &:focus {
-        border-color: #007bff;
-        box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
-      }
-
-      &::-webkit-inner-spin-button,
-      &::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-      }
-
-      -moz-appearance: textfield;
-    }
-
-    button {
-      background-color: purple;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-
-      &:hover,
-      &:active {
-        background-color: fuchsia;
-      }
-    }
-  }
-}
-
-.warning {
-  background: #ffd503;
-  font-family: Helvetica, Arial, sans-serif;
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  padding: 20px;
-  max-width: 500px;
-  border-radius: 5px;
-  z-index: 100;
-}
-
-@supports (scroll-marker-group: after) {
-  .warning {
-    display: none;
-  }
-}
         </style>
         <meta name="theme-color" content="#fafafa">
     </head>
