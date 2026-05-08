@@ -284,6 +284,41 @@
                 border-color: gray;
                 }
             }
+
+            .carousel {
+                &::scroll-button(right),
+                &::scroll-button(left) {
+                cursor: pointer;
+                position: absolute;
+                z-index: 1;
+                position-anchor: --carousel;
+                inline-size: 44px;
+                background-color: rgb(255 255 255 / 0.5);
+                backdrop-filter: blur(5px);
+                border: 1px solid black;
+                border-radius: 50%;
+                line-height: 1;
+                aspect-ratio: 1;
+                content: "";
+
+                top: anchor(center);
+                inset-inline: anchor(start) anchor(end);
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='size-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M15.75 19.5 8.25 12l7.5-7.5' /%3E%3C/svg%3E%0A");
+                background-size: 24px 24px;
+                background-repeat: no-repeat;
+                background-position: center;
+                translate: 20px -50%;
+                transition: border-color 0.5s ease-out;
+                }
+
+                &::scroll-button(right) {
+                top: anchor(center);
+                content: "";
+                inset-inline: auto anchor(end);
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='size-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='m8.25 4.5 7.5 7.5-7.5 7.5' /%3E%3C/svg%3E%0A");
+                translate: -20px -50%;
+                }
+            }
         </style>
         <meta name="theme-color" content="#fafafa">
     </head>
