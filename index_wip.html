@@ -216,7 +216,7 @@
             overflow: hidden;
         }
 
-        .carousel > .content {
+        .carousel > .contents {
             display: flex;
 
             overflow-x: auto;
@@ -226,25 +226,23 @@
             -webkit-overflow-scrolling: touch;
         }
 
-        .carousel > .content::-webkit-scrollbar {
+        .carousel > .contents::-webkit-scrollbar {
             width: 10px;
             height: 10px;
         }
 
-        .carousel > .content::-webkit-scrollbar-thumb {
+        .carousel > .contents::-webkit-scrollbar-thumb {
             background: black;
             border-radius: 10px;
         }
 
-        .carousel > .content::-webkit-scrollbar-track {
+        .carousel > .contents::-webkit-scrollbar-track {
             background: transparent;
         }
 
-        .carousel > .content > img, video {
+        .carousel > .contents > div {
             scroll-snap-align: start;
             flex-shrink: 0;
-            width: 300px;
-            height: 300px;
             margin-right: 50px;
             border-radius: 10px;
             background: #eee;
@@ -257,13 +255,14 @@
             justify-content: center;
             align-items: center;
             font-size: 100px;
-
+img, video{
             object-fit: cover;
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            }
         }
 
         .carousel>a {
@@ -404,7 +403,7 @@
   <a href="#slide-2">2</a>
   <a href="#slide-3">3</a>
   <a href="#slide-4">4</a>
-
+<div class="contents">
                 <div class="content">
                     <video src="assets/img/AR_CV3.mov" controls>Your browser does not support the video tag.</video>
                 </div>
@@ -423,6 +422,7 @@
                 <div class="content">
                     <video src="assets/img/AR_CV4.mp4" controls>Your browser does not support the video tag.</video>
                 </div>
+            </div>
             </div>
         </div>
 
