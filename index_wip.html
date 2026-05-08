@@ -1,491 +1,793 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <title>Hyerin Seok</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-    <link rel="apple-touch-icon" href="icon.png">
+    <head>
+        <meta charset="utf-8">
+        <title>Hyerin Seok</title>
+        <link rel="stylesheet" href="assets/css/style.css">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+        <link rel="apple-touch-icon" href="icon.png">
 
-    <style>
-        @import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Comfortaa|M+PLUS+Rounded+1c&display=swap');
+        <style>
+            @import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Comfortaa|M+PLUS+Rounded+1c&display=swap');
 
-        * {box-sizing: border-box;}
-
-        html {
-            height: 100%;
-            overflow: hidden;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            perspective: 1px;
-            transform-style: preserve-3d;
-            height: 100%;
-            overflow-y: scroll;
-            overflow-x: hidden;
-            font-family: 'Comfortaa';
-            color: #003399;
-        }
-
-        h1 {
-            font-size: 250%;
-        }
-
-        p {
-            font-size: 140%;
-            line-height: 150%;
-            color: #333;
-        }
-
-        .slide {
-            position: relative;
-            padding: 20px 10%;
-            min-height: 100px;
-            width: 100%;
-            box-sizing: border-box;
-            transform-style: inherit;
-        }
-
-        .slide:before {
-            content: "";
-            position: absolute;
-            top: 125px;
-            bottom: 0;
-            left: 0;
-            right: 0;
-        }
-
-        .title {
-            width: 50%;
-            padding: 5%;
-            border-radius: 5px;
-            background: rgba(240, 230, 220, .7);
-        }
-
-        .slide:nth-child(2n+1) .title {
-            margin-left: 0;
-            margin-right: auto;
-        }
-
-        .slide:nth-child(2n) .title {
-            margin-left: auto;
-            margin-right: 0;
-        }
-
-        .showOff {
-            max-width: 40%;
-            height: stretch;
-        }
-
-        .showOff > *{
-            max-width: stretch;
-            max-height: stretch;
-            transform: translateZ(.1px) scale(0.9) rotate(3deg);
-            border-radius: 5px;
-            background: rgba(240, 230, 220, .7);
-            box-shadow: 0 0 8px rgba(0, 0, 0, .7);
-        }
-
-        .slide:nth-child(2n+1) .showOff{
-            position: absolute;
-            top: 5%;
-            right: 10%;
-            margin-left: 0;
-            margin-right: auto;
-        }
-
-        .slide:nth-child(2n) .showOff{
-            position: absolute;
-            top: 5%;
-            left: 10%;
-            margin-left: auto;
-            margin-right: 0;
-        }
-
-        .slide,
-        .slide:before {
-            background: 50% 50% / cover;
-        }
-
-        header {
-            overflow: hidden;
-            padding: 50px;
-        }
-
-        header a {
-            float: left;
-            text-align: center;
-            padding: 12px;
-            line-height: 25px;
-            border-radius: 4px;
-            color: #003399;
-            text-decoration: none;
-            font-size: 18px;
-        }
-
-        .header-right {
-            float: right;
-        }
-
-        .title a {
-            text-decoration: underline;
-            position: relative;
-            z-index: auto;
-            color: #6699ff;
-            font-size: 18px;
-        }
-        
-        @media screen and (max-width: 800px) {
-            header a {
-                float: none;
-                display: block;
-                text-align: left;
-            }
-            
-            .header-right {
-                float: none;
+            * {
+                box-sizing: border-box;
             }
 
-            .slide .title {
-                width : 100%;
+            html {
+                height: 100%;
+                overflow: hidden;
             }
 
-            .slide:nth-child(n) .showOff{
-                max-width: 100%;
+            body {
+                margin: 0;
+                padding: 0;
+                perspective: 1px;
+                transform-style: preserve-3d;
+                height: 100%;
+                overflow-y: scroll;
+                overflow-x: hidden;
+                font-family: 'Comfortaa';
+                color: #003399;
+            }
+
+            h1 {
+                font-size: 250%;
+            }
+
+            p {
+                font-size: 140%;
+                line-height: 150%;
+                color: #333;
+            }
+
+            .slide {
                 position: relative;
-                top: auto;
-                left: auto;
-                right: auto;
-                margin-left: auto;
+                padding: 20px 10%;
+                min-height: 100px;
+                width: 100%;
+                box-sizing: border-box;
+                transform-style: inherit;
+            }
+
+            .slide:before {
+                content: "";
+                position: absolute;
+                top: 125px;
+                bottom: 0;
+                left: 0;
+                right: 0;
+            }
+
+            .title {
+                width: 50%;
+                padding: 5%;
+                border-radius: 5px;
+                background: rgba(240, 230, 220, .7);
+            }
+
+            .slide:nth-child(2n+1) .title {
+                margin-left: 0;
                 margin-right: auto;
             }
-        }
 
-        #title {
-            z-index: 50 !important;
-        }
-
-        #title h1 {
-            transform-origin: 50% 100%;
-        }
-
-        #slide1 {
-            z-index: 0 !important;
-        }
-
-        .peekaboo {
-            z-index: -50;
-            position: sticky;
-            bottom: 1px;
-            align-content: center;
-            text-align: center;
-        }
-
-        #slide_end {
-            background: lightblue;
-            display: grid;
-            grid-template-columns: auto 70% auto;
-        }
-        
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
+            .slide:nth-child(2n) .title {
+                margin-left: auto;
+                margin-right: 0;
             }
-            to { 
-                transform: rotate(360deg);
+
+            .showOff {
+                max-width: 40%;
+                height: stretch;
             }
-        }
 
-        img.spinningbori {
-            animation: rotate 1s infinite linear;
-            width: 100%;
-            align-content: center;
-            margin: auto;
-        }
-    </style>
-    <meta name="theme-color" content="#fafafa">
-</head>
+            .showOff>* {
+                max-width: stretch;
+                max-height: stretch;
+                transform: translateZ(.1px) scale(0.9) rotate(3deg);
+                border-radius: 5px;
+                background: rgba(240, 230, 220, .7);
+                box-shadow: 0 0 8px rgba(0, 0, 0, .7);
+            }
 
-<body>
-    <header>
+            .slide:nth-child(2n+1) .showOff {
+                position: absolute;
+                top: 5%;
+                right: 10%;
+                margin-left: 0;
+                margin-right: auto;
+            }
 
-        <a href="/" class="logo"><h1>Hyerin Seok</h1></a>
-        <div class="header-right">
-            <a href="/">About me</a>
-            <a href="resume.html">Resume</a>
+            .slide:nth-child(2n) .showOff {
+                position: absolute;
+                top: 5%;
+                left: 10%;
+                margin-left: auto;
+                margin-right: 0;
+            }
+
+            .slide,
+            .slide:before {
+                background: 50% 50% / cover;
+            }
+
+            header {
+                overflow: hidden;
+                padding: 50px;
+            }
+
+            header a {
+                float: left;
+                text-align: center;
+                padding: 12px;
+                line-height: 25px;
+                border-radius: 4px;
+                color: #003399;
+                text-decoration: none;
+                font-size: 18px;
+            }
+
+            .header-right {
+                float: right;
+            }
+
+            .title a {
+                text-decoration: underline;
+                position: relative;
+                z-index: auto;
+                color: #6699ff;
+                font-size: 18px;
+            }
+
+            @media screen and (max-width: 800px) {
+                header a {
+                    float: none;
+                    display: block;
+                    text-align: left;
+                }
+
+                .header-right {
+                    float: none;
+                }
+
+                .slide .title {
+                    width: 100%;
+                }
+
+                .slide:nth-child(n) .showOff {
+                    max-width: 100%;
+                    position: relative;
+                    top: auto;
+                    left: auto;
+                    right: auto;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+            }
+
+            #title {
+                z-index: 50 !important;
+            }
+
+            #title h1 {
+                transform-origin: 50% 100%;
+            }
+
+            #slide1 {
+                z-index: 0 !important;
+            }
+
+            .peekaboo {
+                z-index: -50;
+                position: sticky;
+                bottom: 1px;
+                align-content: center;
+                text-align: center;
+            }
+
+            #slide_end {
+                background: lightblue;
+                display: grid;
+                grid-template-columns: auto 70% auto;
+            }
+
+            @keyframes rotate {
+                from {
+                    transform: rotate(0deg);
+                }
+
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+
+            img.spinningbori {
+                animation: rotate 1s infinite linear;
+                width: 100%;
+                align-content: center;
+                margin: auto;
+            }
+
+            .ab-carousel {
+                /** SETTINGS **/
+                /* prev & next buttons */
+                --nav-btn-size: 40px;
+                --nav-btn-bg: rgb(11, 15, 26);
+                --nav-btn-txt: white;
+                /* navigation markers */
+                --nav-marker-bg: 20px;
+                --nav-marker-bg: rgb(197, 201, 210);
+                /* content colours */
+                --content-text-color: rgb(255, 255, 255);
+                --cta-btn-text-color: rgb(83, 86, 90);
+                --cta-btn-bg: rgb(255, 255, 255);
+                /* layout */
+                width: min(calc(100% - 2rem), 1440px);
+                /* specify the smallest size */
+                --img-aspect-ratio: 16/9;
+                /* image aspect ratio */
+                display: grid;
+                grid-auto-flow: column;
+                grid-auto-columns: 95%;
+                gap: 0;
+                padding-bottom: 1.2rem;
+                /* this allows the border shadow to appear - if you don't want a box shadow, remove from the img selector, and change this value.*/
+                anchor-name: --carousel;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                overscroll-behaviour-x: contain;
+                scroll-behavior: smooth;
+                scrollbar-width: none;
+
+                /* Secret sauce - empty the befor and after pseudo elements to push first and last items to the middle (ie. no left or right gap) */
+                &::before,
+                &::after {
+                    content: '';
+                }
+
+                /** Navigation marker group - control the layout and position of the scroll marker buttons **/
+                scroll-marker-group: after;
+
+                &::scroll-marker-group {
+                    position: absolute;
+                    position-anchor: --carousel;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    justify-self: center;
+                    gap: .25rem;
+                    top: calc(anchor(bottom) - 4.5rem);
+                    left: calc(anchor(left) + 10%);
+                    right: calc(anchor(right) + 10%);
+                }
+
+                /** carousel item **/
+                >div {
+                    position: relative;
+                    scroll-snap-align: center;
+                    /* centers snap */
+                    scroll-snap-stop: always;
+                    /* ensures that the scroll stops at each element */
+                    container-type: scroll-state;
+                    display: flex;
+
+                    /* scroll to this item on load: add this class to one ab-carousel > div */
+                    &.scroll-start {
+                        scroll-initial-target: nearest;
+                    }
+
+                    /* item title/name */
+                    >.content {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        justify-items: center;
+                        align-items: flex-start;
+                        text-align: left;
+                        width: 100%;
+                        height: 100%;
+                        transition: all 300ms ease-in-out;
+                        border-radius: 20px;
+                        /* Add a touch of black so the text pops*/
+                        background: linear-gradient(125deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 50%);
+
+                        /* When not current item, scale down - makes the animation more interesting*/
+                        @container not scroll-state(snapped: inline) {
+                            scale: .5;
+                            opacity: 0;
+                            translate: 0 -100px;
+                        }
+                    }
+
+                    >.content>* {
+                        padding-bottom: 2rem;
+                        padding-left: 4rem;
+                    }
+
+                    >.content>h2 {
+                        margin: 1rem 0 0 0;
+                        font-size: 2.3rem;
+                        white-space: nowrap;
+                        color: var(--content-text-color);
+                        transition: all 300ms ease-in-out;
+
+                        /* When not current item */
+                        @container not scroll-state(snapped: inline) {
+                            scale: .5;
+                            opacity: .5;
+                            translate: 0 -100px;
+                        }
+                    }
+
+                    >.content>p {
+                        margin: 0;
+                        white-space: nowrap;
+                        transition: all 300ms ease-in-out;
+                        color: var(--content-text-color);
+
+                        @container not scroll-state(snapped: inline) {
+                            scale: .5;
+                            opacity: 0;
+                        }
+                    }
+
+                    /* Call to action button */
+                    >.content>p>a {
+                        display: inline-block;
+                        height: 32px;
+                        min-width: 64px;
+                        padding: 6px 16px;
+                        font-size: 16px;
+                        border-radius: 25px;
+                        background-color: var(--cta-btn-bg);
+                        color: var(--cta-btn-text-color);
+                        text-align: center;
+                        line-height: 30px;
+                        text-decoration: none;
+                    }
+
+                    >.content>p>a:hover {
+                        box-shadow: 0 4px 8px 0 rgba(0 0 0 /.25);
+                        transition: box-shadow .1s ease-in;
+                    }
+
+                    /* image */
+                    >.img {
+                        width: 100%;
+                        height: 100%;
+                        aspect-ratio: var(--img-aspect-ratio);
+                        transition: all 300ms ease-in-out;
+                        transform-origin: center center;
+
+                        /*When  not current item */
+                        @container not scroll-state(snapped: inline) {
+                            scale: .5;
+                            opacity: .5;
+                        }
+
+                        &>img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            border-radius: 20px;
+                            box-shadow: 0px 12px 12px -4px rgba(0, 0, 0, 0.49);
+                        }
+                    }
+
+                    /** Style the navigation markers **/
+                    &::scroll-marker {
+                        content: ' ';
+                        height: 20px;
+                        aspect-ratio: 1;
+                        background-color: var(--nav-marker-bg);
+                        border-radius: 50%;
+                        transition: 150ms ease-in-out;
+                        scale: .75;
+                        opacity: .8;
+                    }
+
+                    /* current item marker */
+                    &::scroll-marker:target-current {
+                        opacity: 1;
+                        scale: 1;
+                    }
+
+                    /* hover and keyboard focus */
+                    &::scroll-marker:where(:hover, :focus-visible) {
+                        opacity: 1;
+                    }
+
+                    /* keybaord focus */
+                    &::scroll-marker:focus-visible {
+                        outline: 1px solid var(--nav-marker-bg);
+                        outline-offset: 4px;
+                    }
+                }
+
+                /** Style the Navigation Previous / next buttons **/
+                &::scroll-button(*) {
+                    position: absolute;
+                    position-anchor: --carousel;
+                    width: var(--nav-btn-size);
+                    aspect-ratio: 1/1;
+                    background-color: var(--nav-btn-bg);
+                    display: grid;
+                    place-content: center;
+                    color: var(--nav-btn-txt);
+                    border: none;
+                    border-radius: 50%;
+                    opacity: 1;
+                    cursor: pointer;
+                    transition: all 150ms ease-in-out;
+                }
+
+                /* button - prev */
+                &::scroll-button(inline-start) {
+                    content: '\276E';
+                    left: calc(anchor(left) + 3rem);
+                    bottom: calc(anchor(bottom) + var(--nav-btn-size));
+                }
+
+                /* button - next */
+                &::scroll-button(inline-end) {
+                    content: '\276F';
+                    right: calc(anchor(right) + 3rem);
+                    bottom: calc(anchor(bottom) + var(--nav-btn-size));
+                }
+
+                /* hover and keyboard focus */
+                &::scroll-button(*):not(:disabled):where(:hover, :focus-visible) {
+                    opacity: 1;
+                    scale: 1.1;
+                }
+
+                /* keyboard focus*/
+                &::scroll-button(*):focus-visible {
+                    outline: 1px solid var(--nav-btn-bg);
+                    outline-offset: 4px;
+                }
+
+                /* disabled */
+                &::scroll-button(*):disabled {
+                    opacity: .25;
+                    cursor: unset;
+                }
+            }
+        </style>
+        <meta name="theme-color" content="#fafafa">
+    </head>
+
+    <body>
+        <header>
+
+            <a href="/" class="logo">
+                <h1>Hyerin Seok</h1>
+            </a>
+            <div class="header-right">
+                <a href="/">About me</a>
+                <a href="resume.html">Resume</a>
+            </div>
+        </header>
+
+        <div id="slide1" class="slide">
+            <div class="showOff">
+                <img src="assets/img/hyerin.jpg">
+            </div>
+            <div class="title">
+                <h2>Hello!</h2>
+                <p>
+                    My name is Hyerin Seok, pronounced like the bird heron.
+                    I'm a Design forward Software Developer in the San Francisco Bay Area.
+                    I'm a creative coder, gamer, artist, cat mom and passionate about creative technology.
+
+                    My experience lies in HCI concepts in UI/UX Prototyping, Spatial Computing, Mixed Reality, Game Dev, Web
+                    I am a problem solver, bridging the gap between the artist and engineer.
+                    <br><br>
+                    Below are some of my projects!
+                </p>
+            </div>
         </div>
-    </header>
 
-    <div id="slide1" class="slide">
-        <div class="showOff">
-            <img src="assets/img/hyerin.jpg">
-        </div>
-        <div class="title">
-            <h2>Hello!</h2>
-            <p>
-                My name is Hyerin Seok, pronounced like the bird heron.
-                I'm a Design forward Software Developer in the San Francisco Bay Area.
-                I'm a creative coder, gamer, artist, cat mom and passionate about creative technology.
+        <div id="slide2" class="slide">
+            <div class="showOff">
+                <img src="assets/img/Logo+web.webp">
+            </div>
 
-                My experience lies in HCI concepts in UI/UX Prototyping, Spatial Computing, Mixed Reality, Game Dev, Web
-                I am a problem solver, bridging the gap between the artist and engineer.
-                <br><br>
-                Below are some of my projects!
-            </p>
+            <div class="title">
+                <h2>Museum of Science Fiction</h2>
+                <h3>2026 - present</h3>
+                <p>Currently participating in a volunteer project called Museum of Science Fiction, as a Senior Virtual
+                    Reality Developer, creating an interactive navigation system in Unity.
+                    <br>
+                    <a href="https://www.museumofsciencefiction.org/vrmosf">Museum of Science Fiction</a>
+                </p>
+
+            </div>
         </div>
-    </div>
-    
-    <div id="slide2" class="slide">
-        <div class="showOff">
-            <img src="assets/img/Logo+web.webp">
+
+        <div id="slide3" class="slide">
+            <div class="showOff">
+                <img src="assets/img/FishingGame.png">
+            </div>
+
+            <div class="title">
+                <h2>Game Development project</h2>
+                <h3>2025 - present</h3>
+                <p>Fishing Pals is an idle incremental fishing game inspired by the classic Let’s Go Fishing toy. Players
+                    fish from a swirling whirlpool filled with colorful, animated fish that pop in and out of the water. The
+                    game combines nostalgia with modern idle mechanics and progression systems. Techstacks include Godot
+                    Engine with gdscript.</p>
+            </div>
         </div>
-        
-        <div class="title">
-            <h2>Museum of Science Fiction</h2>
-            <h3>2026 - present</h3>
-            <p>Currently participating in a volunteer project called Museum of Science Fiction, as a Senior Virtual Reality Developer, creating an interactive navigation system in Unity.
-                <br>
-                <a href="https://www.museumofsciencefiction.org/vrmosf">Museum of Science Fiction</a>
-            </p>
+
+        <div id="slide4" class="slide">
+            <div class="showOff">
+                <img src="assets/img/RM_hdf5.png">
+            </div>
+
+            <div class="title">
+                <h2>OpenCV project</h2>
+                <h3>2024</h3>
+                <p>Project consulting aiding a research project. OpenCV + Python to compute hdf5 files</p>
+            </div>
+        </div>
+
+        <div id="slide5" class="slide">
+            <div class="showOff">
+                <iframe src="https://drive.google.com/file/d/18bIe6MYl7-KiVuaOV-2ko4MuJDKEGhVx/preview" width="640"
+                    height="480"></iframe>
+            </div>
+
+            <div class="title">
+                <h2>Viewer for retail Store Displays</h2>
+                <p>App for viewing 3D models of products for retail store ipad devices. Built in Spark AR.</p>
+            </div>
+        </div>
+
+        <div id="slide6" class="slide">
+            <div class="showOff">
+                <video src="assets/img/AR_Media.mov" controls>Your browser does not support the video tag.</video>
+            </div>
+
+            <div class="title">
+                <h2>Sample Prototype for AR Media Texture</h2>
+                <p>I designed this sample prototype app for showcasing AR Media Texture feature in Spark AR Studio. I used
+                    AR occlusion technique with a Video texture instead of Image to create an optical illusion.</p>
+            </div>
+        </div>
+
+        <div id="slide7" class="slide">
+            <section class="ab-carousel">
+                <div>
+                    <div class="content">
+                        <h2>Heading 1</h2>
+                        <p>Caption text can go here</p>
+                        <p><a href="#">Link</a></p>
+                    </div>
+                    <div class="img">
+                        <img src="/path/to/image" alt="">
+                    </div>
+                </div>
+                <!-- add the scroll-start class to highlight this item by default -->
+                <div class="scroll-start">
+                    <div class="content">
+                        <h2>Heading 2</h2>
+                        <p><a href="#">Link</a></p>
+                    </div>
+                    <div class="img">
+                        <img src="/path/to/image" alt="">
+                    </div>
+                </div>
+                <div>
+                    <div class="content">
+                        <h2>Heading 3</h2>
+                        <p><a href="#">Link</a></p>
+                    </div>
+                    <div class="img">
+                        <img src="/path/to/image" alt="">
+                    </div>
+                </div>
+            </section>
+            <div class="showOff">
+                <video src="assets/img/AR_CV3.mov" controls>Your browser does not support the video tag.</video>
+            </div>
+
+            <div class="title">
+                <h2>AR CV prototypes</h2>
+                <p>During my time at Meta, I worked on a lot of projects involving object detection in AR with computer
+                    vision, in many different devices including HMDs and Mobiles. Here are some of my prototype examples.
+                </p>
+            </div>
+        </div>
+
+        <!--
+        <div id="slide8" class="slide">
+            <div class="showOff">
+                <video src="assets/img/AR_Interaction_Spark.mp4" controls>Your browser does not support the video tag.</video>
+            </div>
             
+            <div class="title">
+                <h2>Viewer for retail Store Displays</h2>
+                <p>App for viewing 3D models of products for retail store ipad devices. Built in Spark AR.</p>
+            </div>
         </div>
-    </div>
+        
+        <div id="slide9" class="slide">
+            <div class="showOff">
+                <video src="assets/img/AR_Interaction_Spark.mp4" controls>Your browser does not support the video tag.</video>
+            </div>
+            
+            <div class="title">
+                <h2>Viewer for retail Store Displays</h2>
+                <p>App for viewing 3D models of products for retail store ipad devices. Built in Spark AR.</p>
+            </div>
+        </div>
+        
+        <div id="slide10" class="slide">
+            <div class="showOff">
+                <video src="assets/img/AR_Interaction_Spark.mp4" controls>Your browser does not support the video tag.</video>
+            </div>
+            
+            <div class="title">
+                <h2>Viewer for retail Store Displays</h2>
+                <p>App for viewing 3D models of products for retail store ipad devices. Built in Spark AR.</p>
+            </div>
+        </div>
+    -->
+        <div id="slide11" class="slide">
+            <div class="showOff">
+                <video src="assets/img/AR_Interaction_Spark.mp4" controls>Your browser does not support the video
+                    tag.</video>
+            </div>
 
-    <div id="slide3" class="slide">
-        <div class="showOff">
-            <img src="assets/img/FishingGame.png">
+            <div class="title">
+                <h2>AR project for application submission</h2>
+                <p>Take home AR interaction assignments for Meta Reality Lab using Spark Studio with Javascript.</p>
+            </div>
         </div>
-        
-        <div class="title">
-            <h2>Game Development project</h2>
-            <h3>2025 - present</h3>
-            <p>Fishing Pals is an idle incremental fishing game inspired by the classic Let’s Go Fishing toy. Players fish from a swirling whirlpool filled with colorful, animated fish that pop in and out of the water. The game combines nostalgia with modern idle mechanics and progression systems. Techstacks include Godot Engine with gdscript.</p>
-        </div>
-    </div>
 
-    <div id="slide4" class="slide">
-        <div class="showOff">
-            <img src="assets/img/RM_hdf5.png">
-        </div>
-        
-        <div class="title">
-            <h2>OpenCV project</h2>
-            <h3>2024</h3>
-            <p>Project consulting aiding a research project. OpenCV + Python to compute hdf5 files</p>
-        </div>
-    </div>
+        <div id="slide12" class="slide">
+            <div class="showOff">
+                <img src="assets/img/ARRA.png">
+            </div>
 
-    <div id="slide5" class="slide">
-        <div class="showOff">
-            <iframe src="https://drive.google.com/file/d/18bIe6MYl7-KiVuaOV-2ko4MuJDKEGhVx/preview" width="640" height="480"></iframe>
+            <div class="title">
+                <h2>ARRA</h2>
+                <h3>Augmented Reality Remote Assistant - 2020</h3>
+                <p>
+                    This project investigates the combination of virtual and augmented reality to support communication
+                    between two distant parties, such as an expert technician guiding a less experienced repairman in the
+                    field. The accompanying video illustrates how the technology works.
+                    <br>
+                    <a href="https://www.colorado.edu/atlas/arra">CU Atlas - ARRA</a>
+                </p>
+            </div>
         </div>
-        
-        <div class="title">
-            <h2>Viewer for retail Store Displays</h2>
-            <p>App for viewing 3D models of products for retail store ipad devices. Built in Spark AR.</p>
-        </div>
-    </div>
-    
-    <div id="slide6" class="slide">
-        <div class="showOff">
-            <video src="assets/img/AR_Media.mov" controls>Your browser does not support the video tag.</video>
-        </div>
-        
-        <div class="title">
-            <h2>Sample Prototype for AR Media Texture</h2>
-            <p>I designed this sample prototype app for showcasing AR Media Texture feature in Spark AR Studio. I used AR occlusion technique with a Video texture instead of Image to create an optical illusion.</p>
-        </div>
-    </div>
-    
-    <div id="slide7" class="slide">
-        <div class="showOff">
-            <video src="assets/img/AR_CV3.mov" controls>Your browser does not support the video tag.</video>
-        </div>
-        
-        <div class="title">
-            <h2>AR CV prototypes</h2>
-            <p>During my time at Meta, I worked on a lot of projects involving object detection in AR with computer vision, in many different devices including HMDs and Mobiles. Here are some of my prototype examples.</p>
-        </div>
-    </div>
-    
-<!--
-    <div id="slide8" class="slide">
-        <div class="showOff">
-            <video src="assets/img/AR_Interaction_Spark.mp4" controls>Your browser does not support the video tag.</video>
-        </div>
-        
-        <div class="title">
-            <h2>Viewer for retail Store Displays</h2>
-            <p>App for viewing 3D models of products for retail store ipad devices. Built in Spark AR.</p>
-        </div>
-    </div>
-    
-    <div id="slide9" class="slide">
-        <div class="showOff">
-            <video src="assets/img/AR_Interaction_Spark.mp4" controls>Your browser does not support the video tag.</video>
-        </div>
-        
-        <div class="title">
-            <h2>Viewer for retail Store Displays</h2>
-            <p>App for viewing 3D models of products for retail store ipad devices. Built in Spark AR.</p>
-        </div>
-    </div>
-    
-    <div id="slide10" class="slide">
-        <div class="showOff">
-            <video src="assets/img/AR_Interaction_Spark.mp4" controls>Your browser does not support the video tag.</video>
-        </div>
-        
-        <div class="title">
-            <h2>Viewer for retail Store Displays</h2>
-            <p>App for viewing 3D models of products for retail store ipad devices. Built in Spark AR.</p>
-        </div>
-    </div>
--->
-    <div id="slide11" class="slide">
-        <div class="showOff">
-            <video src="assets/img/AR_Interaction_Spark.mp4" controls>Your browser does not support the video tag.</video>
-        </div>
-        
-        <div class="title">
-            <h2>AR project for application submission</h2>
-            <p>Take home AR interaction assignments for Meta Reality Lab using Spark Studio with Javascript.</p>
-        </div>
-    </div>
-    
-    <div id="slide12" class="slide">
-        <div class="showOff">
-            <img src="assets/img/ARRA.png">
-        </div>
-        
-        <div class="title">
-            <h2>ARRA</h2>
-            <h3>Augmented Reality Remote Assistant - 2020</h3>
-            <p>
-                This project investigates the combination of virtual and augmented reality to support communication between two distant parties, such as an expert technician guiding a less experienced repairman in the field. The accompanying video illustrates how the technology works.
-                <br>
-                <a href="https://www.colorado.edu/atlas/arra">CU Atlas - ARRA</a>
-            </p>
-        </div>
-    </div>
-    
-    <div id="slide13" class="slide">
-        <div class="showOff">
-            <img src="assets/img/kidGame.png">
-        </div>
-        
-        <div class="title">
-            <h2>Kids Climbing Trees</h2>
-            <h3>Group project for a game dev course</h3>
-            <p>
-                Built in Unity 2D, I worked on asset creation and animation.
-                <br>
-                <a href="https://rhysrueffert.itch.io/kids-climbing-trees">Itch.io page</a>
-            </p>
-        </div>
-    </div>
-    
-    <div id="slide14" class="slide">
-        <div class="showOff">
-            <video src="assets/img/ES_bookmark.mp4" controls>Your browser does not support the video tag.</video>
-        </div>
-        
-        <div class="title">
-            <h2>Exploring HCI without a screen</h2>
-            <h3>Bookmark</h3>
-            <p>
-                Inspired by Gianni Colombo’s concept of “elastic space”, we technologically stretched environments across distances and built multiple working interfaces that communicate across time and space.
-Concept for this tangible interface was a smart bookmark
-Used Arduino Circuit Playground integrated with conductive paper to create a raw working prototype
-Allowed users to digitally share their reading pace
 
-            </p>
-        </div>
-    </div>
-    
-    <div id="slide15" class="slide">
-        <div class="showOff">
-            <img src="assets/img/mirage.png">
-        </div>
-        
-        <div class="title">
-            <h2>AR project</h2>
-            <h3>Drawing objects in AR environment</h3>
-            <p>
-Enabled users to draw in AR space, using a Lenovo Mirage AR headset coupled with a phone acting as a screen
-Qualisys motion capture system paired with Bluetooth controllers for user motion and Input
+        <div id="slide13" class="slide">
+            <div class="showOff">
+                <img src="assets/img/kidGame.png">
+            </div>
 
-            </p>
+            <div class="title">
+                <h2>Kids Climbing Trees</h2>
+                <h3>Group project for a game dev course</h3>
+                <p>
+                    Built in Unity 2D, I worked on asset creation and animation.
+                    <br>
+                    <a href="https://rhysrueffert.itch.io/kids-climbing-trees">Itch.io page</a>
+                </p>
+            </div>
         </div>
-    </div>
-    
-    <div id="slide16" class="slide">
-        <div class="showOff">
-            <iframe src="https://drive.google.com/file/d/1SPL_9cZj-8uXi6RTA4y50jzBY-cLljL9/preview" width="640" height="480" ></iframe>
-        </div>
-        
-        <div class="title">
-            <h2>Engine Display</h2>
-            <p>
-                Augmented reality project involving interaction with a 3D engine model to educate DoD military mechanics
- 
-Using Unity, Microsoft Hololens, and Mixed Reality Toolkit, enabled users to move, drag, rotate, zoom, and separate engine components using hand gestures and voice commands 
-            </p>
-        </div>
-    </div>
-    
-    
-    <div id="slide17" class="slide">
-        <div class="showOff">
-            <img src="assets/img/2016VR.jpg">
-        </div>
-        
-        <div class="title">
-            <h2>AR project</h2>
-            <h3>AR exercise transition</h3>
-            <p>
-                Research project assessing motion sickness in VR, AR and MR, and to gauge the effectiveness of an XR environment as a motivator for exercise. 
-Using Samsung GearVR headset paired with a phone, user was to exercise on a stationary machine
-Environment transitions from AR to VR in an attempt to mitigate motion sickness
-OpenCV used with phone’s camera to track head movement via referencing known object
-            </p>
-        </div>
-    </div>
-    
-    <div id="slide18" class="slide">
-        <div class="showOff">
-            <img src="assets/img/snoop.png">
-        </div>
-        
-        <div class="title">
-            <h2>Snoopz</h2>
-            <h3>Museum info app</h3>
-            <p>
-                Built a cross-device mobile app using cordova, that connects users phones to museum artifacts with bluetooth beacons.
-            </p>
-        </div>
-    </div>
-    
-    <div id="slide_end" class="slide header">
-        <img class="spinningbori" src="assets/img/bori.png">
-        <div class="peekaboo header">
-            Goodjob on scrolling all the way down! More to come.
-        </div>
-        <img class="spinningbori" src="assets/img/bori.png">
-    </div>
 
-    <script src="js/vendor/modernizr-3.8.0.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+        <div id="slide14" class="slide">
+            <div class="showOff">
+                <video src="assets/img/ES_bookmark.mp4" controls>Your browser does not support the video tag.</video>
+            </div>
 
-</body>
+            <div class="title">
+                <h2>Exploring HCI without a screen</h2>
+                <h3>Bookmark</h3>
+                <p>
+                    Inspired by Gianni Colombo’s concept of “elastic space”, we technologically stretched environments
+                    across distances and built multiple working interfaces that communicate across time and space.
+                    Concept for this tangible interface was a smart bookmark
+                    Used Arduino Circuit Playground integrated with conductive paper to create a raw working prototype
+                    Allowed users to digitally share their reading pace
+
+                </p>
+            </div>
+        </div>
+
+        <div id="slide15" class="slide">
+            <div class="showOff">
+                <img src="assets/img/mirage.png">
+            </div>
+
+            <div class="title">
+                <h2>AR project</h2>
+                <h3>Drawing objects in AR environment</h3>
+                <p>
+                    Enabled users to draw in AR space, using a Lenovo Mirage AR headset coupled with a phone acting as a
+                    screen
+                    Qualisys motion capture system paired with Bluetooth controllers for user motion and Input
+
+                </p>
+            </div>
+        </div>
+
+        <div id="slide16" class="slide">
+            <div class="showOff">
+                <iframe src="https://drive.google.com/file/d/1SPL_9cZj-8uXi6RTA4y50jzBY-cLljL9/preview" width="640"
+                    height="480"></iframe>
+            </div>
+
+            <div class="title">
+                <h2>Engine Display</h2>
+                <p>
+                    Augmented reality project involving interaction with a 3D engine model to educate DoD military mechanics
+
+                    Using Unity, Microsoft Hololens, and Mixed Reality Toolkit, enabled users to move, drag, rotate, zoom,
+                    and separate engine components using hand gestures and voice commands
+                </p>
+            </div>
+        </div>
+
+
+        <div id="slide17" class="slide">
+            <div class="showOff">
+                <img src="assets/img/2016VR.jpg">
+            </div>
+
+            <div class="title">
+                <h2>AR project</h2>
+                <h3>AR exercise transition</h3>
+                <p>
+                    Research project assessing motion sickness in VR, AR and MR, and to gauge the effectiveness of an XR
+                    environment as a motivator for exercise.
+                    Using Samsung GearVR headset paired with a phone, user was to exercise on a stationary machine
+                    Environment transitions from AR to VR in an attempt to mitigate motion sickness
+                    OpenCV used with phone’s camera to track head movement via referencing known object
+                </p>
+            </div>
+        </div>
+
+        <div id="slide18" class="slide">
+            <div class="showOff">
+                <img src="assets/img/snoop.png">
+            </div>
+
+            <div class="title">
+                <h2>Snoopz</h2>
+                <h3>Museum info app</h3>
+                <p>
+                    Built a cross-device mobile app using cordova, that connects users phones to museum artifacts with
+                    bluetooth beacons.
+                </p>
+            </div>
+        </div>
+
+        <div id="slide_end" class="slide header">
+            <img class="spinningbori" src="assets/img/bori.png">
+            <div class="peekaboo header">
+                Goodjob on scrolling all the way down! More to come.
+            </div>
+            <img class="spinningbori" src="assets/img/bori.png">
+        </div>
+
+        <script src="js/vendor/modernizr-3.8.0.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+    </body>
 
 </html>
