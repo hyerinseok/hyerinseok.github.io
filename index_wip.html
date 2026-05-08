@@ -211,127 +211,79 @@
                 margin: auto;
             }
 
-            @layer carousel {
-                .carousel {
-                    display: grid;
-                    background: white;
-                    aspect-ratio: 1;
-                    grid-auto-columns: 100%;
-                    grid-auto-flow: column;
-                    inline-size: 100%;
-                    anchor-name: --carousel;
-                    scroll-marker-group: after;
-                    scroll-behavior: smooth;
-                    border: 5px solid black;
-                    overflow-x: auto;
-                    overscroll-behavior-x: contain;
-                    scroll-snap-type: x mandatory;
-                    scrollbar-width: none;
+            .carousel {
+                display: grid;
+                background: white;
+                aspect-ratio: 1;
+                grid-auto-columns: 100%;
+                grid-auto-flow: column;
+                inline-size: 100%;
+                anchor-name: --carousel;
+                scroll-marker-group: after;
+                scroll-behavior: smooth;
+                border: 5px solid black;
+                overflow-x: auto;
+                overscroll-behavior-x: contain;
+                scroll-snap-type: x mandatory;
+                scrollbar-width: none;
 
-                    img {
-                    width: 100%;
-                    aspect-ratio: 1;
-                    object-fit: contain;
-                    object-position: center;
-                    }
-
-                    
-                    video {
-                    width: 100%;
-                    aspect-ratio: 1;
-                    object-fit: contain;
-                    object-position: center;
-                    }
-
-                    /*     Set the scroll marker group */
-                    &::scroll-marker-group {
-                    display: flex;
-                    margin-top: 20px;
-                    gap: 16px;
-                    height: 70px;
-                    width: 100%;
-                    }
-                }
+                img {
+                width: 100%;
+                aspect-ratio: 1;
+                object-fit: contain;
+                object-position: center;
                 }
 
-                @layer carouselItemsAndThumbs {
-                .carousel > div {
-                    /*     Get the attribute of the div containing the background-image (Chrome since 133) */
-                    --image: attr(data-src type(<image>), "");
-                    scroll-snap-stop: always;
-                    scroll-snap-align: start;
-
-                    /* Style the thumbnails*/
-                    &::scroll-marker {
-                    display: block;
-                    content: " ";
-                    aspect-ratio: 1;
-                    width: 60px;
-                    height: 60px;
-                    border: 3px solid black;
-                    cursor: pointer;
-                    background: transparent;
-                    justify-content: center;
-                    transition: border-color 0.5s ease-out;
-                    /* Set image variable from parent as background */
-                    background: var(--image, green);
-                    background-size: cover;
-                    background-repeat: no-repeat;
-                    }
-
-                    &::scroll-marker:target-current {
-                    border-color: fuchsia;
-                    }
-                    &::scroll-marker:hover,
-                    &::scroll-marker:active {
-                    border-color: gray;
-                    }
-                }
+                
+                video {
+                width: 100%;
+                aspect-ratio: 1;
+                object-fit: contain;
+                object-position: center;
                 }
 
-                @layer carouselArrows {
-                    .carousel {
-                        &::scroll-button(right),
-                        &::scroll-button(left) {
-                        cursor: pointer;
-                        position: absolute;
-                        z-index: 1;
-                        position-anchor: --carousel;
-                        inline-size: 44px;
-                        background-color: rgb(255 255 255 / 0.5);
-                        backdrop-filter: blur(5px);
-                        border: 1px solid black;
-                        border-radius: 50%;
-                        line-height: 1;
-                        aspect-ratio: 1;
-                        content: "";
+                /*     Set the scroll marker group */
+                &::scroll-marker-group {
+                display: flex;
+                margin-top: 20px;
+                gap: 16px;
+                height: 70px;
+                width: 100%;
+                }
+            }
 
-                        top: anchor(center);
-                        inset-inline: anchor(start) anchor(end);
-                        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='size-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M15.75 19.5 8.25 12l7.5-7.5' /%3E%3C/svg%3E%0A");
-                        background-size: 24px 24px;
-                        background-repeat: no-repeat;
-                        background-position: center;
-                        translate: 20px -50%;
-                        transition: border-color 0.5s ease-out;
-                        }
+            .carousel > div.img {
+                /*     Get the attribute of the div containing the background-image (Chrome since 133) */
+                --image: attr(data-src type(<image>), "");
+                scroll-snap-stop: always;
+                scroll-snap-align: start;
 
-                        &::scroll-button(right) {
-                        top: anchor(center);
-                        content: "";
-                        inset-inline: auto anchor(end);
-                        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='size-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='m8.25 4.5 7.5 7.5-7.5 7.5' /%3E%3C/svg%3E%0A");
-                        translate: -20px -50%;
-                        }
-                        &::scroll-button(right):hover,
-                        &::scroll-button(right):active,
-                        &::scroll-button(left):hover,
-                        &::scroll-button(left):active {
-                        border-color: fuchsia;
-                        }
-                    }
+                /* Style the thumbnails*/
+                &::scroll-marker {
+                display: block;
+                content: " ";
+                aspect-ratio: 1;
+                width: 60px;
+                height: 60px;
+                border: 3px solid black;
+                cursor: pointer;
+                background: transparent;
+                justify-content: center;
+                transition: border-color 0.5s ease-out;
+                /* Set image variable from parent as background */
+                background: var(--image, green);
+                background-size: cover;
+                background-repeat: no-repeat;
                 }
 
+                &::scroll-marker:target-current {
+                border-color: fuchsia;
+                }
+                &::scroll-marker:hover,
+                &::scroll-marker:active {
+                border-color: gray;
+                }
+            }
         </style>
         <meta name="theme-color" content="#fafafa">
     </head>
@@ -439,38 +391,21 @@
             <div class="showOff">
                 <div class="carousel">
                     <div class="content">
-                        <h2>Heading 1</h2>
-                        <p>Caption text can go here</p>
-                        <p><a href="#">Link</a></p>
-                    </div>
-                    <div class="img">
                         <video src="assets/img/AR_CV3.mov" controls>Your browser does not support the video tag.</video>
                     </div>
                 </div>
                 <div>
                     <div class="content">
-                        <h2>Heading 2</h2>
-                        <p><a href="#">Link</a></p>
-                    </div>
-                    <div class="img">
                         <video src="assets/img/AR_CV.mp4" controls>Your browser does not support the video tag.</video>
                     </div>
                 </div>
                 <div>
                     <div class="content">
-                        <h2>Heading 3</h2>
-                        <p><a href="#">Link</a></p>
-                    </div>
-                    <div class="img">
                         <video src="assets/img/AR_CV2.mp4" controls>Your browser does not support the video tag.</video>
                     </div>
                 </div>
                 <div>
                     <div class="content">
-                        <h2>Heading 3</h2>
-                        <p><a href="#">Link</a></p>
-                    </div>
-                    <div class="img">
                         <video src="assets/img/AR_CV4.mp4" controls>Your browser does not support the video tag.</video>
                     </div>
                 </div>
