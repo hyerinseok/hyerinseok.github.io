@@ -170,6 +170,7 @@ header a {
 
 #slide_end {
     background: lightblue;
+    bottom: 0;
     display: grid;
     grid-template-columns: auto 70% auto;
 }
@@ -186,11 +187,11 @@ header a {
 
 img.spinningbori {
     animation: rotate 1s infinite linear;
-    width: 100%;
+    width: 50%;
     align-content: center;
     margin: auto;
 }
-
+/*
 .contents {
     display: flex;
     
@@ -234,17 +235,18 @@ img.spinningbori {
     font-size: 100px;
 }
 
-.content > img, video {
+.content > img, .content > video {
     object-fit: cover;
-    /* position: absolute; */
+    /* position: absolute; 
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
 }
-
+*/
 .carousel {
-    width: 400px;
+    /*width: 400px;*/
+    height: 100%;
     text-align: center;
     overflow: hidden;
 }
@@ -268,6 +270,100 @@ img.spinningbori {
 
 .carousel > a:focus {
     background: #000;
+}
+
+.carousel ul {
+    margin: auto;
+    height: 100%;
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;  
+    padding: 0;
+    anchor-name: --my-carousel;
+    scroll-marker-group: after;
+
+}
+
+.carousel li {
+    list-style-type: none;
+    background-color: #eeeeee;
+    scroll-snap-align: center;
+}
+
+.carousel li img, .carousel li video{
+    height: 100%;
+    /* padding: 5px; */
+}
+
+.carousel ul::scroll-button(*) {
+    border: 0;
+    font-size: 2rem;
+    color: black;
+    opacity: 0.7;
+    cursor: pointer;
+    position: absolute;
+    padding: 0;
+    position-anchor: --my-carousel;
+}
+
+.carousel ul::scroll-button(*):hover,
+.carousel ul::scroll-button(*):focus {
+    opacity: 1;
+}
+
+.carousel ul::scroll-button(*):active {
+    translate: 1px 1px;
+}
+
+.carousel ul::scroll-button(*):disabled {
+    opacity: 0.2;
+    cursor: unset;
+}
+.carousel ul::scroll-button(left) {
+    content: "◄" / "Previous";
+}
+
+.carousel ul::scroll-button(right) {
+    content: "►" / "Next";
+}
+
+.carousel ul::scroll-button(left) {
+    left: calc(anchor(left));
+    top: calc(anchor(top));
+    height: 100%;
+    width: 3vw;
+}
+
+.carousel ul::scroll-button(right) {    
+    right: calc(anchor(right));
+    top: calc(anchor(top));
+    height: 100%;
+    width: 3vw;
+}
+
+.carousel ul::scroll-marker-group {
+    position: absolute;
+    position-anchor: --my-carousel;
+    top: calc(anchor(bottom) - 70px);
+    justify-self: anchor-center;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.carousel ul::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.carousel ul::-webkit-scrollbar-thumb {
+    background: black;
+    border-radius: 10px;
+}
+
+.carousel ul::-webkit-scrollbar-track {
+    background: transparent;
 }
 
 .intro {
